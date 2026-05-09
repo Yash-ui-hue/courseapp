@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:        #0a0a0f;
+  --bg2:       #111118;
+  --bg3:       #1a1a24;
+  --border:    rgba(255,255,255,0.07);
+  --accent:    #7c6ef7;
+  --accent2:   #e05fff;
+  --accent3:   #00d9c0;
+  --text:      #f0effe;
+  --muted:     #7f7f9a;
+  --success:   #00d9a0;
+  --warning:   #f59e0b;
+  --danger:    #f43f5e;
+  --radius:    14px;
+  --radius-lg: 22px;
+  --glow:      0 0 40px rgba(124,110,247,0.18);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Clash Display',sans-serif;letter-spacing:-0.02em;line-height:1.15}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:99px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;border:none;font-family:'Sora',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s ease;text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 20px rgba(124,110,247,0.35)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(124,110,247,0.45)}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--bg3);color:var(--text);border-color:rgba(255,255,255,0.12)}
+.btn-danger{background:rgba(244,63,94,0.12);color:var(--danger);border:1px solid rgba(244,63,94,0.2)}
+.btn-danger:hover{background:rgba(244,63,94,0.2)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+
+.input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:'Sora',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,110,247,0.15)}
+.input::placeholder{color:var(--muted)}
+
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:rgba(124,110,247,0.25);box-shadow:var(--glow)}
+
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:500}
+.badge-success{background:rgba(0,217,160,0.12);color:var(--success);border:1px solid rgba(0,217,160,0.2)}
+.badge-warning{background:rgba(245,158,11,0.12);color:var(--warning);border:1px solid rgba(245,158,11,0.2)}
+
+.alert{padding:12px 16px;border-radius:10px;font-size:14px;margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.alert-success{background:rgba(0,217,160,0.1);color:var(--success);border:1px solid rgba(0,217,160,0.2)}
+.alert-error{background:rgba(244,63,94,0.1);color:var(--danger);border:1px solid rgba(244,63,94,0.2)}
+.alert-warning{background:rgba(245,158,11,0.1);color:var(--warning);border:1px solid rgba(245,158,11,0.2)}
+
+.label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:6px;letter-spacing:.05em;text-transform:uppercase}
+.divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+.page{min-height:100vh;display:flex;flex-direction:column}
+.page-content{flex:1;padding:2.5rem 2rem;max-width:1100px;margin:0 auto;width:100%}
+.mesh-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 20% 20%,rgba(124,110,247,0.08) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(224,95,255,0.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 60% 10%,rgba(0,217,192,0.04) 0%,transparent 60%)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .5s ease forwards}
+.fade-up-1{animation:fadeUp .5s .05s ease both}
+.fade-up-2{animation:fadeUp .5s .12s ease both}
+.fade-up-3{animation:fadeUp .5s .20s ease both}
+.fade-up-4{animation:fadeUp .5s .28s ease both}
