@@ -101,8 +101,8 @@ router.post('/login', [
     // Set HTTP-only cookie
     res.cookie('token', token, {
       httpOnly: true,
-      secure: false,
-      sameSite: 'strict',
+      secure: true,
+      sameSite: 'none',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -133,7 +133,11 @@ router.get('/me', authMiddleware, async (req, res) => {
 
 // ─── LOGOUT ─────────────────────────────────────────────
 router.post('/logout', (req, res) => {
-  res.clearCookie('token');
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  });
   res.json({ message: 'Logged out successfully' });
 });
 
