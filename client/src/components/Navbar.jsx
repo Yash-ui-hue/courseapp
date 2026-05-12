@@ -13,73 +13,65 @@ export default function Navbar() {
 
   return (
     <header style={{
-      position: 'sticky', top: 0, zIndex: 100,
-      background: 'var(--bg)',
-      borderBottom: '1px solid var(--border)',
-      backdropFilter: 'blur(12px)',
+      position:'sticky',top:0,zIndex:100,
+      background:'rgba(15,15,15,0.9)',
+      backdropFilter:'blur(12px)',
+      borderBottom:'1px solid rgba(255,255,255,0.06)',
     }}>
       <div style={{
-        maxWidth: 1040, margin: '0 auto',
-        padding: '0 1.5rem',
-        height: 56,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        maxWidth:1040,margin:'0 auto',padding:'0 1.5rem',
+        height:52,display:'flex',alignItems:'center',justifyContent:'space-between',
       }}>
         {/* Logo */}
         <div onClick={() => navigate('/dashboard')} style={{
-          display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+          display:'flex',alignItems:'center',gap:10,cursor:'pointer',
         }}>
           <div style={{
-            width: 28, height: 28, borderRadius: 8,
-            background: 'var(--text)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width:28,height:28,borderRadius:8,
+            background:'var(--bg3)',
+            border:'1px solid var(--border2)',
+            display:'flex',alignItems:'center',justifyContent:'center',
+            flexShrink:0,
           }}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="var(--bg)" strokeWidth="0"/>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <rect x="1" y="1" width="5" height="5" rx="1.5" fill="var(--muted)"/>
+              <rect x="7" y="1" width="5" height="5" rx="1.5" fill="var(--muted)"/>
+              <rect x="1" y="7" width="5" height="5" rx="1.5" fill="var(--muted)"/>
+              <rect x="7" y="7" width="5" height="5" rx="1.5" fill="var(--text)"/>
             </svg>
           </div>
-          <span style={{ fontWeight: 600, fontSize: 14, letterSpacing: '-0.02em', color: 'var(--text)' }}>
+          <span style={{fontWeight:600,fontSize:14,letterSpacing:'-0.02em',color:'var(--text)'}}>
             CourseApp
           </span>
         </div>
 
-        {/* Nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        {/* Right nav */}
+        <nav style={{display:'flex',alignItems:'center',gap:0}}>
           {[
-            { label: 'Dashboard', path: '/dashboard' },
-            { label: 'Courses', path: '/payment' },
-          ].map(({ label, path }) => (
+            {label:'Dashboard',path:'/dashboard'},
+            {label:'Courses',path:'/payment'},
+          ].map(({label,path}) => (
             <button key={path} onClick={() => navigate(path)} style={{
-              background: isActive(path) ? 'var(--bg2)' : 'transparent',
+              background:'transparent',
               color: isActive(path) ? 'var(--text)' : 'var(--muted)',
-              border: 'none',
-              borderRadius: 8,
-              padding: '5px 12px',
-              fontSize: 13,
-              fontWeight: isActive(path) ? 500 : 400,
-              fontFamily: 'Inter, sans-serif',
-              cursor: 'pointer',
-              transition: 'all .15s',
+              border:'none',borderRadius:6,padding:'5px 14px',
+              fontSize:13,fontWeight: isActive(path) ? 600 : 400,
+              fontFamily:'Inter,sans-serif',cursor:'pointer',transition:'color .15s',
             }}
-            onMouseEnter={e => { if (!isActive(path)) e.target.style.color = 'var(--text)'; }}
-            onMouseLeave={e => { if (!isActive(path)) e.target.style.color = 'var(--muted)'; }}
+            onMouseEnter={e => { if(!isActive(path)) e.target.style.color='var(--text)'; }}
+            onMouseLeave={e => { if(!isActive(path)) e.target.style.color='var(--muted)'; }}
             >{label}</button>
           ))}
 
-          <div style={{ width: 1, height: 18, background: 'var(--border)', margin: '0 6px' }} />
+          <div style={{width:1,height:16,background:'var(--border2)',margin:'0 8px'}}/>
 
           <button onClick={handleLogout} style={{
-            background: 'transparent',
-            color: 'var(--muted)',
-            border: 'none',
-            borderRadius: 8,
-            padding: '5px 12px',
-            fontSize: 13,
-            fontFamily: 'Inter, sans-serif',
-            cursor: 'pointer',
-            transition: 'color .15s',
+            background:'transparent',color:'var(--muted)',border:'none',
+            borderRadius:6,padding:'5px 14px',fontSize:13,
+            fontFamily:'Inter,sans-serif',cursor:'pointer',transition:'color .15s',
           }}
-          onMouseEnter={e => e.target.style.color = 'var(--red)'}
-          onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+          onMouseEnter={e => e.target.style.color='var(--text)'}
+          onMouseLeave={e => e.target.style.color='var(--muted)'}
           >Sign out</button>
         </nav>
       </div>
