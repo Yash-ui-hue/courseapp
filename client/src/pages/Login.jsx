@@ -3,95 +3,80 @@ import { useNavigate, Link } from 'react-router-dom';
 import API from '../api/axios';
 
 export default function Login() {
-  const [form, setForm]     = useState({ email: '', password: '' });
-  const [error, setError]   = useState('');
+  const [form, setForm]       = useState({ email: '', password: '' });
+  const [error, setError]     = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate            = useNavigate();
+  const navigate              = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
+    setLoading(true); setError('');
     try {
       await API.post('/auth/login', form);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid credentials');
-    } finally {
-      setLoading(false);
-    }
+      setError(err.response?.data?.message || 'Invalid email or password');
+    } finally { setLoading(false); }
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', position: 'relative' }}>
-      <div className="mesh-bg" />
-
-      <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '420px' }}>
+    <div style={{
+      minHeight: '100vh', background: 'var(--bg2)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: '1.5rem',
+    }}>
+      <div style={{ width: '100%', maxWidth: 380 }}>
 
         {/* Logo */}
-        <div className="fade-up" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <div className="fade-up" style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div style={{
-            width: 52, height: 52, borderRadius: '16px',
-            background: 'linear-gradient(135deg, #7c6ef7, #e05fff)',
+            width: 36, height: 36, borderRadius: 10,
+            background: 'var(--text)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 24, fontWeight: 700, color: '#fff',
-            fontFamily: 'Clash Display, sans-serif',
             margin: '0 auto 1rem',
-            boxShadow: '0 8px 28px rgba(124,110,247,0.4)',
-          }}>C</div>
-          <h1 style={{ fontSize: '2rem', color: '#f0effe', marginBottom: '0.4rem' }}>Welcome back</h1>
-          <p style={{ color: '#7f7f9a', fontSize: '14px' }}>Sign in to continue to CourseApp</p>
+          }}>
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="var(--bg)"/>
+            </svg>
+          </div>
+          <h1 style={{ fontSize: '1.35rem', marginBottom: 4 }}>Welcome back</h1>
+          <p style={{ color: 'var(--muted)', fontSize: 13 }}>Sign in to your account</p>
         </div>
 
-        {/* Card */}
-        <div className="fade-up-1 card" style={{ padding: '2rem' }}>
-
+        {/* Form card */}
+        <div className="fade-up-1 card" style={{ padding: '1.5rem' }}>
           {error && (
-            <div className="alert alert-error">
-              <span>⚠</span> {error}
+            <div className="alert alert-error" style={{ marginBottom: '1rem' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, marginTop: 1 }}>
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: '1.2rem' }}>
-              <label className="label">Email address</label>
-              <input
-                className="input"
-                type="email"
-                placeholder="you@example.com"
-                value={form.email}
-                onChange={e => setForm({ ...form, email: e.target.value })}
-                required
-              />
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
+              <label className="label">Email</label>
+              <input className="input" type="email" placeholder="you@example.com"
+                value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
             </div>
-
-            <div style={{ marginBottom: '1.8rem' }}>
+            <div>
               <label className="label">Password</label>
-              <input
-                className="input"
-                type="password"
-                placeholder="••••••••"
-                value={form.password}
-                onChange={e => setForm({ ...form, password: e.target.value })}
-                required
-              />
+              <input className="input" type="password" placeholder="••••••••"
+                value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} required />
             </div>
 
-            <button
-              className="btn btn-primary"
-              type="submit"
-              disabled={loading}
-              style={{ width: '100%', justifyContent: 'center', padding: '12px' }}
-            >
-              {loading ? 'Signing in...' : 'Sign in →'}
+            <button className="btn btn-primary btn-lg" type="submit" disabled={loading}
+              style={{ width: '100%', marginTop: 4 }}>
+              {loading ? <div className="spinner" style={{ borderTopColor: 'var(--bg)' }} /> : 'Sign in'}
             </button>
           </form>
 
           <hr className="divider" />
 
-          <p style={{ textAlign: 'center', color: '#7f7f9a', fontSize: '14px' }}>
-            Don't have an account?{' '}
-            <Link to="/signup" style={{ color: '#7c6ef7', textDecoration: 'none', fontWeight: 500 }}>
+          <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: 13 }}>
+            No account?{' '}
+            <Link to="/signup" style={{ color: 'var(--text)', fontWeight: 500, textDecoration: 'none' }}>
               Sign up
             </Link>
           </p>
