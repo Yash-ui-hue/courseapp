@@ -218,8 +218,8 @@ export default function Payment() {
                   <button
                     onClick={() => handlePayment(course)}
                     disabled={loading === course.id}
-                    className="btn btn-primary btn-sm"
-                    style={{ minWidth: 70 }}
+                    className="btn btn-primary"
+                    style={{ minWidth: 90, padding: '9px 20px' }}
                   >
                     {loading === course.id
                       ? <div className="spinner" style={{ width: 13, height: 13 }} />
