@@ -152,6 +152,9 @@ export default function Payment() {
             return (
               <div key={course.id} style={{
                 background: 'var(--bg2)', border: '1px solid var(--border)',
+                border: course.popular
+                  ? '1.5px solid rgba(96,165,250,0.4)'   // ← blue outline for popular card
+                  : '1px solid var(--border)',
                 borderRadius: 'var(--radius-xl)', padding: '1.25rem',
                 display: 'flex', flexDirection: 'column', gap: '0.85rem',
                 position: 'relative',
@@ -165,7 +168,7 @@ export default function Payment() {
                 {course.popular && (
                   <div style={{
                     position: 'absolute', top: -11, left: '50%', transform: 'translateX(-50%)',
-                    background: 'var(--white)', color: '#0f0f0f',
+                    background: '#18181b', color: '#ffffff',
                     fontSize: 10, fontWeight: 700, padding: '4px 12px',
                     borderRadius: 99, letterSpacing: '.03em',
                     whiteSpace: 'nowrap',
@@ -219,7 +222,7 @@ export default function Payment() {
                     onClick={() => handlePayment(course)}
                     disabled={loading === course.id}
                     className="btn btn-primary"
-                    style={{ minWidth: 90, padding: '9px 20px', fontWeight: 600}}
+                    style={{ minWidth: 90, padding: '9px 20px', fontWeight: 600, background: '#18181b', color: '#ffffff' }}
                   >
                     {loading === course.id
                       ? <div className="spinner" style={{ width: 13, height: 13 }} />
