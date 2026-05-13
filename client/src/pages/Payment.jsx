@@ -164,11 +164,13 @@ export default function Payment() {
                 {/* Most popular pill */}
                 {course.popular && (
                   <div style={{
-                    position: 'absolute', top: -10, left: '50%', transform: 'translateX(-50%)',
+                    position: 'absolute', top: -11, left: '50%', transform: 'translateX(-50%)',
                     background: 'var(--white)', color: '#0f0f0f',
-                    fontSize: 10, fontWeight: 600, padding: '3px 10px',
-                    borderRadius: 99, letterSpacing: '.02em',
+                    fontSize: 10, fontWeight: 700, padding: '4px 12px',
+                    borderRadius: 99, letterSpacing: '.03em',
                     whiteSpace: 'nowrap',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                    border: '1px solid rgba(255,255,255,0.9)',
                   }}>Most popular</div>
                 )}
 
