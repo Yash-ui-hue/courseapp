@@ -55,7 +55,7 @@ export default function Dashboard() {
         {/* Header */}
         <div className="fade-up" style={{display:'flex',alignItems:'center',gap:14,marginBottom:'2rem'}}>
           <div style={{
-            width:46,height:46,borderRadius:12,
+            width:46,height:46,borderRadius:'100%',
             background:avatarColor,
             display:'flex',alignItems:'center',justifyContent:'center',
             fontSize:15,fontWeight:600,color:'#fff',flexShrink:0,
