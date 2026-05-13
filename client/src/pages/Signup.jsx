@@ -67,7 +67,8 @@ export default function Signup() {
                 value={form.password} onChange={e => setForm({...form,password:e.target.value})} required/>
             </div>
             <button className="btn btn-primary btn-lg" type="submit" disabled={loading}
-              style={{width:'100%',marginTop:2}}>
+              style={{width:'100%',marginTop:2, background: 'var(--text)',
+                color: 'var(--bg)'}}>
               {loading ? <div className="spinner"/> : 'Create account'}
             </button>
           </form>
