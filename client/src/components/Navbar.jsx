@@ -19,6 +19,7 @@ export default function Navbar() {
       background:'var(--bg2)',
       backdropFilter:'blur(12px)',
       borderBottom:'1px solid var(--border)',
+      display: window.innerWidth <= 768 ? 'none' : 'block'
     }}>
       <div style={{
         maxWidth:1040,margin:'0 auto',padding:'0 1.5rem',
