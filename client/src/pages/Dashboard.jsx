@@ -257,8 +257,12 @@ export default function Dashboard() {
           ))}
         </div>
         <div className="fade-up-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-          <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: '1.4rem', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div style={{
+            background: user.kyc_status === 'verified' ? 'rgba(22,163,74,0.08)' : 'rgba(217,119,6,0.08)',
+            border: `1px solid ${user.kyc_status === 'verified' ? 'rgba(22,163,74,0.25)' : 'rgba(217,119,6,0.25)'}`,
+            borderRadius: 'var(--radius-xl)', padding: '1.4rem',
+            display: 'flex', flexDirection: 'column', gap: 10,
+          }}>            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 <p style={{ fontSize: 10, color: 'var(--subtle)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 5 }}>Identity</p>
                 <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Aadhaar KYC</h3>
@@ -272,8 +276,12 @@ export default function Dashboard() {
               <button className="btn btn-sm" onClick={() => navigate('/aadhaar')} style={{ alignSelf: 'flex-start', background: 'var(--text)', color: 'var(--bg)', border: '1px solid var(--text)' }}>Verify now →</button>
             )}
           </div>
-          <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-xl)', padding: '1.4rem', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div>
+          <div style={{
+            background: 'rgba(37,99,235,0.08)',
+            border: '1px solid rgba(37,99,235,0.2)',
+            borderRadius: 'var(--radius-xl)', padding: '1.4rem',
+            display: 'flex', flexDirection: 'column', gap: 10,
+          }}>            <div>
               <p style={{ fontSize: 10, color: 'var(--subtle)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 5 }}>Learning</p>
               <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Browse courses</h3>
             </div>
