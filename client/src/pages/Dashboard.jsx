@@ -72,30 +72,50 @@ export default function Dashboard() {
     <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column', maxWidth: 430, margin: '0 auto' }}>
 
       {/* Top header */}
-      <div style={{ display: 'flex', gap: 10 }}>
-        <button style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
-          </svg>
-        </button>
+      {/* Top header — same as desktop for consistency */}
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 1.25rem', height: 52,
+        borderBottom: '1px solid var(--border)',
+        position: 'sticky', top: 0, zIndex: 100,
+        background: 'var(--bg2)', backdropFilter: 'blur(12px)',
+      }}>
+        <div onClick={() => navigate('/dashboard')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: 'var(--bg3)', border: '1px solid var(--border2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <rect x="1" y="1" width="5" height="5" rx="1.5" fill="var(--muted)" />
+              <rect x="7" y="1" width="5" height="5" rx="1.5" fill="var(--muted)" />
+              <rect x="1" y="7" width="5" height="5" rx="1.5" fill="var(--muted)" />
+              <rect x="7" y="7" width="5" height="5" rx="1.5" fill="var(--text)" />
+            </svg>
+          </div>
+          <span style={{ fontWeight: 600, fontSize: 14, letterSpacing: '-0.02em', color: 'var(--text)' }}>CourseApp</span>
+        </div>
 
-        {/* Theme toggle */}
-        <button onClick={toggle} style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
-          title={theme === 'dark' ? 'Switch to light' : 'Switch to dark'}>
-          {theme === 'dark' ? (
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        <div style={{ display: 'flex', gap: 8 }}>
+          {/* Notification */}
+          <button style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
-          ) : (
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          )}
-        </button>
+          </button>
+          {/* Theme toggle */}
+          <button onClick={toggle} style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 8, width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+            {theme === 'dark' ? (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            ) : (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Alerts */}
@@ -231,18 +251,7 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* Bottom nav */}
-      <div style={{ position: 'sticky', bottom: 0, background: 'var(--bg2)', borderTop: '1px solid var(--border)', display: 'flex', padding: '0.6rem 0 0.75rem' }}>
-        {NAV_ITEMS.map(({ label, path, icon }) => {
-          const active = location.pathname === path && label === 'Home';
-          return (
-            <button key={label} onClick={() => navigate(path)} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, background: 'none', border: 'none', cursor: 'pointer', color: active ? 'var(--green)' : 'var(--subtle)', transition: 'color .15s', fontFamily: 'Inter,sans-serif' }}>
-              {icon(active)}
-              <span style={{ fontSize: 10, fontWeight: active ? 600 : 400 }}>{label}</span>
-            </button>
-          );
-        })}
-      </div>
+
     </div>
   );
 
