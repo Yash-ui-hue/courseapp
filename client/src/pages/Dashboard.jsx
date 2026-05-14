@@ -262,12 +262,22 @@ export default function Dashboard() {
             border: `1px solid ${user.kyc_status === 'verified' ? 'rgba(22,163,74,0.25)' : 'rgba(217,119,6,0.25)'}`,
             borderRadius: 'var(--radius-xl)', padding: '1.4rem',
             display: 'flex', flexDirection: 'column', gap: 10,
-          }}>            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div>
-                <p style={{ fontSize: 10, color: 'var(--subtle)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 5 }}>Identity</p>
-                <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Aadhaar KYC</h3>
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 34, height: 34, borderRadius: 8, background: 'rgba(22,163,74,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <div>
+                  <p style={{ fontSize: 10, color: 'var(--subtle)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 4 }}>Identity</p>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Aadhaar KYC</h3>
+                </div>
               </div>
-              <span className={`badge ${user.kyc_status === 'verified' ? 'badge-green' : 'badge-amber'}`}>{user.kyc_status === 'verified' ? 'Verified' : 'Required'}</span>
+              <span className={`badge ${user.kyc_status === 'verified' ? 'badge-green' : 'badge-amber'}`}>
+                {user.kyc_status === 'verified' ? 'Verified' : 'Required'}
+              </span>
             </div>
             <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6 }}>
               {user.kyc_status === 'verified' ? `Your identity is verified. Ending ${user.aadhaar_masked?.slice(-4) || '—'}.` : 'Complete Aadhaar verification to purchase courses.'}
@@ -281,9 +291,19 @@ export default function Dashboard() {
             border: '1px solid rgba(37,99,235,0.2)',
             borderRadius: 'var(--radius-xl)', padding: '1.4rem',
             display: 'flex', flexDirection: 'column', gap: 10,
-          }}>            <div>
-              <p style={{ fontSize: 10, color: 'var(--subtle)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 5 }}>Learning</p>
-              <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Browse courses</h3>
+          }}>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ width: 34, height: 34, borderRadius: 8, background: 'rgba(37,99,235,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" strokeWidth="2">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+              </div>
+              <div>
+                <p style={{ fontSize: 10, color: 'var(--subtle)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 4 }}>Learning</p>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Browse courses</h3>
+              </div>
             </div>
             <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6 }}>Web dev, DSA, System Design. One-time payment, lifetime access.</p>
             <button className="btn btn-sm" onClick={() => navigate('/payment')} style={{ alignSelf: 'flex-start', background: 'var(--text)', color: 'var(--bg)', border: '1px solid var(--text)' }}>View courses →</button>
